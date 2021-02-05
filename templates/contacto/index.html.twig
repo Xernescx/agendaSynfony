@@ -1,20 +1,48 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Hello ContactoController!{% endblock %}
+{% block title %}Contacto index{% endblock %}
 
 {% block body %}
-<style>
-    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
-    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
-</style>
+    <h1>Personal <i class="bi bi-people-fill"></i></h1>
+    
+    
+    <div class="container">
+    <table class="table">
+        <thead>
+            <tr>
+                <th scope="col">Id</th>
+                <th scope="col">Nombre</th>
+                <th scope="col">Apellido</th>
+                <th scope="col">Correo</th>
+                <th scope="col">Telefono</th>
+                <th scope="col">Tipo</th>
+                <th scope="col">Notas</th>
+                <th scope="col">actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for contacto in contactos %}
+            <tr>
+                <td scope="col">{{ contacto.id }}</td>
+                <td scope="col">{{ contacto.nombre }}</td>
+                <td scope="col">{{ contacto.apellido }}</td>
+                <td scope="col">{{ contacto.correo }}</td>
+                <td scope="col">{{ contacto.telefono }}</td>
+                <td scope="col">{{ contacto.tipo }}</td>
+                <td scope="col">{{ contacto.notas }}</td>
+                <td scope="col">
+                    <a class="btn btn-info" href="{{ path('contacto_show', {'id': contacto.id}) }}">show</a>
+                    <a class="btn btn-primary" href="{{ path('contacto_edit', {'id': contacto.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="8">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+    </div>
 
-<div class="example-wrapper">
-    <h1>Hello {{ controller_name }}! ✅</h1>
-
-    This friendly message is coming from:
-    <ul>
-        <li>Your controller at <code><a href="{{ 'D:/Miscosas/Estudios/wep/Despliegue/synfo/agenda1/src/Controller/ContactoController.php'|file_link(0) }}">src/Controller/ContactoController.php</a></code></li>
-        <li>Your template at <code><a href="{{ 'D:/Miscosas/Estudios/wep/Despliegue/synfo/agenda1/templates/contacto/index.html.twig'|file_link(0) }}">templates/contacto/index.html.twig</a></code></li>
-    </ul>
-</div>
+    <a class="btn btn-primary" href="{{ path('contacto_new') }}">Create new</a>
 {% endblock %}
