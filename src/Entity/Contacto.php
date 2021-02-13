@@ -4,6 +4,7 @@ namespace App\Entity;
 
 use App\Repository\ContactoRepository;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * @ORM\Entity(repositoryClass=ContactoRepository::class)
@@ -18,32 +19,39 @@ class Contacto
     private $id;
 
     /**
-     * @ORM\Column(type="string", length=100, nullable=true)
+     * @ORM\Column(type="string", length=40)
      */
     private $nombre;
 
     /**
-     * @ORM\Column(type="string", length=100, nullable=true)
+     * @Assert\NotBlank
+     * 
+     * @ORM\Column(type="string", length=50)
      */
     private $apellido;
 
     /**
-     * @ORM\Column(type="string", length=200)
-     */
-    private $correo;
-
-    /**
-     * @ORM\Column(type="string", length=14, nullable=true)
+     * @ORM\Column(type="string", length=16)
+     * @Assert\NotBlank
+     * @Assert\Regex("/^\+?\d+/")
      */
     private $telefono;
 
     /**
-     * @ORM\Column(type="string", length=12)
+     * @Assert\NotBlank
+     * @ORM\Column(type="string", length=120)
+     */
+    private $correo;
+
+    /**
+     * @Assert\NotBlank
+     *  
+     * @ORM\Column(type="string", length=10)
      */
     private $tipo;
 
     /**
-     * @ORM\Column(type="string", length=1000, nullable=true)
+     * @ORM\Column(type="text", nullable=true)
      */
     private $notas;
 
@@ -57,7 +65,7 @@ class Contacto
         return $this->nombre;
     }
 
-    public function setNombre(?string $nombre): self
+    public function setNombre(string $nombre): self
     {
         $this->nombre = $nombre;
 
@@ -69,9 +77,21 @@ class Contacto
         return $this->apellido;
     }
 
-    public function setApellido(?string $apellido): self
+    public function setApellido(string $apellido): self
     {
         $this->apellido = $apellido;
+
+        return $this;
+    }
+
+    public function getTelefono(): ?string
+    {
+        return $this->telefono;
+    }
+
+    public function setTelefono(string $telefono): self
+    {
+        $this->telefono = $telefono;
 
         return $this;
     }
@@ -84,18 +104,6 @@ class Contacto
     public function setCorreo(string $correo): self
     {
         $this->correo = $correo;
-
-        return $this;
-    }
-
-    public function getTelefono(): ?string
-    {
-        return $this->telefono;
-    }
-
-    public function setTelefono(?string $telefono): self
-    {
-        $this->telefono = $telefono;
 
         return $this;
     }

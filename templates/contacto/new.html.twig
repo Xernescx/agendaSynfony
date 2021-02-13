@@ -1,11 +1,15 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}New Contacto{% endblock %}
+{% block title %}Nuevo Contacto
+{% endblock %}
 
-{% block body %}
-    <h1>Create new Contacto</h1>
+{% block contain %}
 
-    {{ include('contacto/_form.html.twig') }}
+	<h1 class="d-flex justify-content-center mt-1">Nuevo Contacto</h1>
+	<div class="container mb-2">
+		<div class="newform">
+			{{ include('contacto/_form.html.twig') }}
 
-    <a href="{{ path('contacto_index') }}">back to list</a>
+		</div>
+	</div>
 {% endblock %}

@@ -1,26 +1,78 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <meta charset="UTF-8">
-        <title>{% block title %}Welcome!{% endblock %}</title>
-        {% block stylesheets %}
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css">
-        {% endblock %}
+	<head>
+		<meta charset="UTF-8">
+		<title>
+			{% block title %}Welcome!
+			{% endblock %}
+		</title>
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+		<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css">
+		<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
+		<link rel="stylesheet" type="text/css" href="/estilos/formulario.css">
+		{% block stylesheet %}
 
-    </head>
-    <body>
-        {% block body %}
-        
-        
-        {% endblock %}
-        {% block javascript %}
-        <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
-        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
-        
-        {% endblock %}
-        
+			<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+			<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
+			<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
+		{% endblock %}
+
+	</head>
+	<body>
+			{% block body  %}
+                <div id="page-container">
+		        	<div>
+		        		{% block navbar %}
+		        			<nav class="navbar navbar-dark bg-dark navbar-expand-lg ">
+		        				<a class="navbar-brand" href="/contacto">Inicio</a>
+		        				<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
+		        					<span class="navbar-toggler-icon"></span>
+		        				</button>
+		        				<div class="collapse navbar-collapse" id="navbarText">
+		        					<ul class="navbar-nav mr-auto">
+		        						<li class="nav-item dropdown">
+		        							<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+		        								Agendas
+		        							</a>
+		        							<div class="dropdown-menu" aria-labelledby="navbarDropdown">
+		        								<a class="dropdown-item" href="{{ path('contacto_list', {'type': 'personal'}) }}">
+		        									<i class="bi bi-person-badge-fill mr-1"></i>Agenda Personal
+		        								</a>
+		        								<a class="dropdown-item" href="{{ path('contacto_list', {'type': 'profesional'}) }}">
+		        									<i class="bi bi-people-fill mr-1"></i>Agenda Profesional
+		        								</a>
+		        								<div class="dropdown-divider"></div>
+		        								<a class="dropdown-item" href="{{ path('contacto_list', {'type': 'all'}) }}">
+		        									<i class="bi bi-person-circle mr-1"></i>Todas las Agendas
+		        								</a>
+		        							</div>
+		        						</li>
+		        					</ul>
+		        					<span class="navbar-text">
+		        						<a class="btn btn-primary mr-3" href="{{ path('contacto_index') }}">
+		        							<i class="bi bi-arrow-90deg-left mr-1"></i>Atras</a>
+		        					</span>
+		        					<a class="btn btn-primary" href="{{ path('contacto_new') }}">Nuevo Contacto<i class="bi bi-person-check-fill ml-1"></i>
+		        					</a>
+		        				</div>
+		        			</nav>
+		        		{% endblock %}
+		        		    {% block contain %}{% endblock %}
+		        	</div>
+		            {% block footer %}
+		            	    <div>
+		            	    	<div id="content-wrap"></div>
+		            	    	<div id="footer" class="card-footer  footer mt-2">
+		            	    		<p>&copy; 2021 temoparal</p>
+		            	    	</div>
+		            	    </div>
+	                {% endblock %}
+		                        {% block javascript %}
+		                        	<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+		                        	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+		                        	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+		                        {% endblock %}
+                </div> 
+            {% endblock %}  
     </body>
-    
 </html>

@@ -20,10 +20,30 @@ class ContactoController extends AbstractController
      */
     public function index(ContactoRepository $contactoRepository): Response
     {
-        return $this->render('contacto/index.html.twig', [
+        return $this->render('/index.html.twig', [
             'contactos' => $contactoRepository->findAll(),
         ]);
     }
+
+    /**
+     * @Route("/list/{type}", name="contacto_list")
+     */
+    public function list(Request $request,  $type): Response{
+        if($type == 'all'){
+            $contacto = $this->getdoctrine()
+            ->getRepository(Contacto::class)
+            ->findAll();
+        }else{
+            $contacto = $this->getdoctrine()
+            ->getRepository(Contacto::class)
+            ->findBy(['tipo' => $type]);
+        }
+        return $this->render('contacto/table.html.twig',[
+            'contactos' => $contacto,
+            'type' => $type,
+        ]);
+    }
+
 
     /**
      * @Route("/new", name="contacto_new", methods={"GET","POST"})
@@ -35,6 +55,9 @@ class ContactoController extends AbstractController
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
+           /*  dump((string)$form->getErrors(true, false));die(); */
+
+
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->persist($contacto);
             $entityManager->flush();

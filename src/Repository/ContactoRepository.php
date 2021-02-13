@@ -47,23 +47,4 @@ class ContactoRepository extends ServiceEntityRepository
         ;
     }
     */
-
-    public function findAllPersonal(){
-        return $this->createQueryBuilder('c')
-        ->andWhere('c.tipo = : valTipo')
-        ->setParameter('valTipo', 'pers') 
-        ->orderBy('c.id', 'ASC')
-        ->getQuery()
-        ->getResult();
-    }
-
-    public function findAllProfecional(){
-        return $this->createQueryBuilder('c')
-        ->andWhere('c.tipo = : valTipo')
-        ->setParameter('valTipo', 'prof') 
-        ->orderBy('c.id', 'ASC')
-        ->getQuery()
-        ->getResult();
-    }
-
 }

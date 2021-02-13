@@ -1,0 +1,63 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Contacto index
+{% endblock %}
+
+{% block contain %}
+	<div class="d-flex justify-content-center">
+		<h1 class="ti">Agendas</h1>
+	</div>
+
+	<div class="container ">
+		<div class="agendasOrden ">
+			<div class="row">
+				<div class="col ">
+					<div class="agendasPerPro d-flex justify-content-center">
+						<div class="col">
+							<div class="row d-flex justify-content-center">
+								<img class="img-responsive" src="/img/phase1.png" alt="phase 1">
+							</div>
+							<div class="row d-flex justify-content-center ">
+								<a class="btn btn-primary" href="{{ path('contacto_list', {'type': 'personal'}) }}">Agenda Personal
+									<i class="bi bi-person-badge-fill ml-1"></i>
+								</a>
+							</div>
+						</div>
+					</div>
+				</div>
+
+				<div class="col ">
+					<div class="agendasPerPro d-flex justify-content-center">
+						<div class="col">
+							<div class="row d-flex justify-content-center">
+								<img class="img-responsive" src="/img/phase2.png" alt="phase 2">
+							</div>
+							<div class="row d-flex justify-content-center ">
+								<a class="btn btn-primary" href="{{ path('contacto_list', {'type': 'profesional'}) }}">Agenda Profesional
+									<i class="bi bi-people-fill ml-1"></i>
+								</a>
+							</div>
+						</div>
+					</div>
+				</div>
+
+			</div>
+			<div class="row">
+				<div class="col">
+					<div class="agendasPerPro d-flex justify-content-center mt-2">
+						<div class="col">
+							<div class="row d-flex justify-content-center">
+								<img class="img-responsive" src="/img/phase12.png" alt="phase 1 and 2">
+							</div>
+							<div class="row d-flex justify-content-center ">
+								<a class="btn btn-primary" href="{{ path('contacto_list', {'type': 'all'}) }}">Todas las Agendas
+									<i class="bi bi-person-circle ml-1"></i>
+								</a>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+{% endblock %}

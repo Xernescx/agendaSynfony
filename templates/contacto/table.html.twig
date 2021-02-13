@@ -1,0 +1,76 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Contacto index
+{% endblock %}
+
+{% block contain %}
+	<div class="d-flex justify-content-center mb-2 mt-2">
+		{% if type == 'all' %}
+			<h1>Agenda Completa
+				<i class="bi bi-person-circle"></i>
+			</h1>
+		{% elseif type == 'profesional'  %}
+			<h1>Agenda Profesional
+				<i class="bi bi-person-badge-fill"></i>
+			</h1>
+		{% else %}
+			<h1>Agenda Personal
+				<i class="bi bi-people-fill"></i>
+			</h1>
+		{% endif %}
+	</div>
+
+
+	<div class="container">
+		<table class="table">
+			<thead class="thead-dark">
+				<tr>
+					<th scope="col">
+						{% if type == 'personal' %}
+							<i class="bi bi-people-fill"></i>
+						{% elseif type == 'profesional'  %}
+							<i class="bi bi-person-badge-fill"></i>
+						{% endif %}
+					</th>
+					<th scope="col">Id</th>
+					<th scope="col">Nombre</th>
+					<th scope="col">Apellido</th>
+					<th scope="col">Correo</th>
+					<th scope="col">Telefono</th>
+					<th scope="col">Tipo</th>
+					<th scope="col">Notas</th>
+					<th scope="col">actions</th>
+				</tr>
+			</thead>
+			<tbody>
+				{% for contacto in contactos %}
+					<tr>
+						<th scope="col">
+							{% if contacto.tipo == 'personal' %}
+								<i class="bi bi-people-fill"></i>
+							{% else %}
+								<i class="bi bi-person-badge-fill"></i>
+							{% endif %}
+						</th>
+						<td scope="col">{{ contacto.id }}</td>
+						<td scope="col">{{ contacto.nombre }}</td>
+						<td scope="col">{{ contacto.apellido }}</td>
+						<td scope="col">{{ contacto.correo }}</td>
+						<td scope="col">{{ contacto.telefono }}</td>
+						<td scope="col">{{ contacto.tipo }}</td>
+						<td scope="col">{{ contacto.notas }}</td>
+						<td scope="col">
+							<a class="btn btn-info" href="{{ path('contacto_show', {'id': contacto.id}) }}">ver</a>
+							<a class="btn btn-primary" href="{{ path('contacto_edit', {'id': contacto.id}) }}">editar</a>
+						</td>
+					</tr>
+				{% else %}
+					<tr>
+						<td colspan="8">no records found</td>
+					</tr>
+				{% endfor %}
+			</tbody>
+		</table>
+	</div>
+
+{% endblock %}
