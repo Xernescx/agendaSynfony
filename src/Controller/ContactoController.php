@@ -114,4 +114,19 @@ class ContactoController extends AbstractController
 
         return $this->redirectToRoute('contacto_index');
     }
+
+    /**
+     * @Route("/{id}", name="contacto_delete2", methods={"DELETE"})
+     */
+    public function delete2(Request $request, Contacto $contacto): Response
+    {
+        if ($this->isCsrfTokenValid('delete'.$contacto->getId(), $request->request->get('_token'))) {
+            $entityManager = $this->getDoctrine()->getManager();
+            $entityManager->remove($contacto);
+            $entityManager->flush();
+        }
+        return $this->redirectToRoute('contacto_list');
+    }
+    
 }
+

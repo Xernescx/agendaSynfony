@@ -22,6 +22,7 @@
 
 
 	<div class="container">
+	
 		<table class="table">
 			<thead class="thead-dark">
 				<tr>
@@ -44,6 +45,9 @@
 			</thead>
 			<tbody>
 				{% for contacto in contactos %}
+				<form method="post" action="{{ path('contacto_delete2', {'id': contacto.id}) }}" onsubmit="return confirm('Are you sure you want to delete this item?');">
+					<input type="hidden" name="_method" value="DELETE">
+					<input type="hidden" name="_token" value="{{ csrf_token('delete' ~ contacto.id) }}">
 					<tr>
 						<th scope="col">
 							{% if contacto.tipo == 'personal' %}
@@ -59,11 +63,15 @@
 						<td scope="col">{{ contacto.telefono }}</td>
 						<td scope="col">{{ contacto.tipo }}</td>
 						<td scope="col">{{ contacto.notas }}</td>
-						<td scope="col">
-							<a class="btn btn-info" href="{{ path('contacto_show', {'id': contacto.id}) }}">ver</a>
-							<a class="btn btn-primary" href="{{ path('contacto_edit', {'id': contacto.id}) }}">editar</a>
+						<td scope="col ">
+							<div class="btn-group" role="group" aria-label="Basic example">
+								<a class="btn btn-info" href="{{ path('contacto_show', {'id': contacto.id}) }}">ver</a>
+								<a class="btn btn-primary" href="{{ path('contacto_edit', {'id': contacto.id}) }}">editar</a>
+								<button class="btn btn-danger">Borrar</button>
+							</div>
 						</td>
 					</tr>
+					</form>
 				{% else %}
 					<tr>
 						<td colspan="8">no records found</td>
