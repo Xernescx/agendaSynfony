@@ -24,8 +24,8 @@ Es necesario tener los siguietes programas o librerias para que funcione:
 
 * Synfony
 * Composer
-* No me acuerdo que mas
-
+* XAMPP
+* Un lector de codigo como VS code
 
 
 ## Guia de instalacion
