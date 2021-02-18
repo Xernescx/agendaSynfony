@@ -46,6 +46,7 @@ Donde la agenda ya estara funcionando correctamente
 * Composer
 * VS code
 * XAMPP
+* MySQL
 
 ## Autor
 Mi persona **Carlos Jose Torres Baietti**
