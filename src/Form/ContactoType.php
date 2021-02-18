@@ -18,12 +18,14 @@ class ContactoType extends AbstractType
             ->add('apellido')
             ->add('correo', EmailType::class,[
                 'help' => 'Tiene que contener @'
+                //Uso el EmailType para que solo acepte correos electronicos
             ] )
             ->add('telefono')
             ->add('tipo', ChoiceType::class, [
                 'choices' =>[
                     'personal' => 'personal',
                     'profesional' => 'profesional'
+                    //Uso el Choice para crear un selector solo para los tipos de agendas
                 ],
             ])
             ->add('notas')

@@ -23,7 +23,7 @@ class Contacto
      * @ORM\Column(type="string", length=40)
      */
     private $nombre;
-
+    //NotBlank para que sea un campo obligatorio
     /**
      * @Assert\NotBlank
      * 
@@ -36,6 +36,8 @@ class Contacto
      * @Assert\NotBlank
      * @Assert\Regex("/^\+?\d+/")
      */
+    //NotBlank para que sea un campo obligatorio
+    //Uso assert regex para solo aceptar numeros de telefono validos
     private $telefono;
 
     /**
@@ -43,14 +45,14 @@ class Contacto
      * @ORM\Column(type="string", length=120)
      */
     private $correo;
-
+    //NotBlank para que sea un campo obligatorio
     /**
      * @Assert\NotBlank
      *  
      * @ORM\Column(type="string", length=10)
      */
     private $tipo;
-
+    //NotBlank para que sea un campo obligatorio
     /**
      * @ORM\Column(type="text", nullable=true)
      */

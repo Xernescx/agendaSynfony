@@ -28,12 +28,13 @@ class ContactoController extends AbstractController
     /**
      * @Route("/list/{type}", name="contacto_list")
      */
+    //Filtro para buscar por tipo de agengas o todas
     public function list(Request $request,  $type): Response{
-        if($type == 'all'){
+        if($type == 'all'){//En el caso que busquemos todas buscara todas las agenads
             $contacto = $this->getdoctrine()
             ->getRepository(Contacto::class)
             ->findAll();
-        }else{
+        }else{//En el caso de buscar algo en espesifico hara una busqueda con el tipo que pasemos por url
             $contacto = $this->getdoctrine()
             ->getRepository(Contacto::class)
             ->findBy(['tipo' => $type]);
@@ -48,21 +49,20 @@ class ContactoController extends AbstractController
     /**
      * @Route("/new", name="contacto_new", methods={"GET","POST"})
      */
+    //Crear un nuevo contacto con toda la informacion del formulario
     public function new(Request $request): Response
     {
         $contacto = new Contacto();
         $form = $this->createForm(ContactoType::class, $contacto);
         $form->handleRequest($request);
 
-        if ($form->isSubmitted() && $form->isValid()) {
-           /*  dump((string)$form->getErrors(true, false));die(); */
-
+        if ($form->isSubmitted() && $form->isValid()) {//Confrima si todo la informacion es validad para crear el contacto
 
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->persist($contacto);
             $entityManager->flush();
-
-            return $this->redirectToRoute('contacto_index');
+            
+            return $this->redirectToRoute('contacto_show', ['id' =>$contacto -> getId(),]);
         }
 
         return $this->render('contacto/new.html.twig', [
@@ -74,6 +74,7 @@ class ContactoController extends AbstractController
     /**
      * @Route("/{id}", name="contacto_show", methods={"GET"})
      */
+    //Muestra la informaciono del contacto
     public function show(Contacto $contacto): Response
     {
         return $this->render('contacto/show.html.twig', [
@@ -84,12 +85,13 @@ class ContactoController extends AbstractController
     /**
      * @Route("/{id}/edit", name="contacto_edit", methods={"GET","POST"})
      */
+    //Atualiza el contacto con la nueva informacion
     public function edit(Request $request, Contacto $contacto): Response
     {
         $form = $this->createForm(ContactoType::class, $contacto);
         $form->handleRequest($request);
 
-        if ($form->isSubmitted() && $form->isValid()) {
+        if ($form->isSubmitted() && $form->isValid()) {//Confrima si todo la informacion es validad para atualizar el contacto
             $this->getDoctrine()->getManager()->flush();
 
             return $this->redirectToRoute('contacto_index');
@@ -104,6 +106,7 @@ class ContactoController extends AbstractController
     /**
      * @Route("/{id}", name="contacto_delete", methods={"DELETE"})
      */
+    //Borra el contacto tomando en cuenta su ID
     public function delete(Request $request, Contacto $contacto): Response
     {
         if ($this->isCsrfTokenValid('delete'.$contacto->getId(), $request->request->get('_token'))) {
@@ -118,6 +121,7 @@ class ContactoController extends AbstractController
     /**
      * @Route("/{id}", name="contacto_delete2", methods={"DELETE"})
      */
+    //Borra el contacto tomando en cuenta su ID
     public function delete2(Request $request, Contacto $contacto): Response
     {
         if ($this->isCsrfTokenValid('delete'.$contacto->getId(), $request->request->get('_token'))) {
@@ -125,7 +129,7 @@ class ContactoController extends AbstractController
             $entityManager->remove($contacto);
             $entityManager->flush();
         }
-        return $this->redirectToRoute('contacto_list');
+        return $this->redirectToRoute('contacto_index');
     }
     
 }
