@@ -62,7 +62,7 @@ class ContactoController extends AbstractController
             $entityManager->persist($contacto);
             $entityManager->flush();
             
-            return $this->redirectToRoute('contacto_show', ['id' =>$contacto -> getId(),]);
+            return $this->redirectToRoute('contacto_show', ['id' =>$contacto -> getId(),]);//Redireciona al contacto nuevo por su ID
         }
 
         return $this->render('contacto/new.html.twig', [
