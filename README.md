@@ -48,6 +48,29 @@ Donde la agenda ya estara funcionando correctamente
 * XAMPP
 * MySQL
 
+
+## Codigo del filro de tipo de agenda
+
+	/**
+     * @Route("/{id}/edit", name="contacto_edit", methods={"GET","POST"})
+     */
+    public function edit(Request $request, Contacto $contacto): Response
+    {
+        $form = $this->createForm(ContactoType::class, $contacto);
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+            $this->getDoctrine()->getManager()->flush();
+
+            return $this->redirectToRoute('contacto_index');
+        }
+
+        return $this->render('contacto/edit.html.twig', [
+            'contacto' => $contacto,
+            'form' => $form->createView(),
+        ]);
+    }
+
 ## Autor
 Mi persona **Carlos Jose Torres Baietti**
 
