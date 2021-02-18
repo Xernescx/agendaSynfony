@@ -81,7 +81,7 @@ Mi persona **Carlos Jose Torres Baietti**
 
 ## Cómo contribuir al proyecto.
 
-Puedes usar el codigo de Git y modificarlo y/o mejorarlo en el siguiente enlace:
+Puedes usar el enlace de Git y modificarlo y/o mejorarlo en el siguiente enlace:
 
 https://github.com/Xernescx/agendaSynfony
 
