@@ -19,6 +19,7 @@ class Contacto
     private $id;
 
     /**
+     *  @Assert\NotBlank
      * @ORM\Column(type="string", length=40)
      */
     private $nombre;

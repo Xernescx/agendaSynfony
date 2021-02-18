@@ -26,13 +26,6 @@
 		<table class="table">
 			<thead class="thead-dark">
 				<tr>
-					<th scope="col">
-						{% if type == 'personal' %}
-							<i class="bi bi-people-fill"></i>
-						{% elseif type == 'profesional'  %}
-							<i class="bi bi-person-badge-fill"></i>
-						{% endif %}
-					</th>
 					<th scope="col">Id</th>
 					<th scope="col">Nombre</th>
 					<th scope="col">Apellido</th>
@@ -49,19 +42,18 @@
 					<input type="hidden" name="_method" value="DELETE">
 					<input type="hidden" name="_token" value="{{ csrf_token('delete' ~ contacto.id) }}">
 					<tr>
-						<th scope="col">
-							{% if contacto.tipo == 'personal' %}
-								<i class="bi bi-people-fill"></i>
-							{% else %}
-								<i class="bi bi-person-badge-fill"></i>
-							{% endif %}
-						</th>
 						<td scope="col">{{ contacto.id }}</td>
 						<td scope="col">{{ contacto.nombre }}</td>
 						<td scope="col">{{ contacto.apellido }}</td>
 						<td scope="col">{{ contacto.correo }}</td>
 						<td scope="col">{{ contacto.telefono }}</td>
-						<td scope="col">{{ contacto.tipo }}</td>
+						<td scope="col">
+						{% if contacto.tipo == 'personal' %}
+								<i class="bi bi-people-fill"></i>
+							{% else %}
+								<i class="bi bi-person-badge-fill"></i>
+							{% endif %}
+							</td>
 						<td scope="col">{{ contacto.notas }}</td>
 						<td scope="col ">
 							<div class="btn-group" role="group" aria-label="Basic example">

@@ -28,3 +28,13 @@ img{
     width: 100%;
     height: 2.5rem;            /* Footer height */
   }
+
+  .redesS{
+    padding-left: 20px;
+    color: black;
+    
+  }
+
+  .redesS:visited{
+    color: rgb(128, 0, 117);
+  }

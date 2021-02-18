@@ -25,12 +25,8 @@
 		        	    {% block navbar %}
 		        			<nav class="navbar navbar-dark bg-dark navbar-expand-lg ">
 		        				<a class="navbar-brand" href="/contacto">Inicio</a>
-		        				<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
-		        					<span class="navbar-toggler-icon"></span>
-		        				</button>
-		        				<div class="collapse navbar-collapse" id="navbarSupportedContent">
 		        					<ul class="navbar-nav mr-auto">
-		        						<li class="nav-item dropdown">
+		        						<li class="nav-item dropdown active">
 		        							<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
 		        								Agendas
 		        							</a>
@@ -54,7 +50,6 @@
 		        					</span>
 		        					<a class="btn btn-primary" href="{{ path('contacto_new') }}">Nuevo Contacto<i class="bi bi-person-check-fill ml-1"></i>
 		        					</a>
-		        				</div>
 		        			</nav>
 		        		{% endblock %}
 		        		    {% block contain %}{% endblock %}
@@ -63,7 +58,22 @@
 		            	    <div>
 		            	    	<div id="content-wrap"></div>
 		            	    	<div id="footer" class="card-footer  footer mt-2">
-		            	    		<p>&copy; 2021 temoparal</p>
+		            	    		<div class="d-flex justify-content-between ">
+									<p>&copy; 2021 Carlos Jose Torres Baietti
+									<div class="d-flex justify-content-around">
+									<a class="redesS" href="https://www.facebook.com">
+									<i class="bi bi-facebook"></i>
+									</a>
+									<a class="redesS" href="https://twitter.com/home">
+									<i class="bi bi-twitter"></i>
+									</a>
+									<a class="redesS" href="https://www.instagram.com">
+									<i class="bi bi-instagram" ></i>
+									</a>
+									</div>
+									</div>
+									</p>
+									
 		            	    	</div>
 		            	    </div>
 	                {% endblock %}
