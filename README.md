@@ -1,6 +1,6 @@
-# Agenda Synfony
+# Agenda Symfony
 
-Bienvenido a mi Agenda de Synfony, esta agenda te permite guardar tus contactos por _profesionales y personales_ para separarlos de formas ordenadas y no confundirte
+Bienvenido a mi Agenda de Symfony, esta agenda te permite guardar tus contactos por _profesionales y personales_ para separarlos de formas ordenadas y no confundirte
 
 
 ## Como se usa?
@@ -22,7 +22,7 @@ Luego de ser agregado se puede ver las agendas agrupadas por tipo de agendas y s
 
 Es necesario tener los siguientes programas o librerías para que funcione:
 
-* Synfony
+* Symfony
 * Composer
 * XAMPP
 * Un lector de código como VS code
@@ -42,7 +42,7 @@ Donde la agenda ya estará funcionando correctamente
 
 ## Tecnologías utilizadas.
 
-* Synfony
+* Symfony
 * Composer
 * VS code
 * XAMPP
@@ -83,6 +83,5 @@ Mi persona **Carlos José Torres Baietti**
 
 Puedes usar el enlace de Git y modificarlo y/o mejorarlo en el siguiente enlace:
 
-https://github.com/Xernescx/agendaSynfony
+https://github.com/Xernescx/agendaSymfony
 
- 
