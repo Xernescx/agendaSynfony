@@ -1,11 +1,11 @@
 # Agenda Synfony
 
-Bienvenido a mi Agenda de Synfony, esta agenda te permite guardar tus contactos por profecionales y personales para separarlos de formas ordenadas y no confundirte
+Bienvenido a mi Agenda de Synfony, esta agenda te permite guardar tus contactos por _profecionales y personales_ para separarlos de formas ordenadas y no confundirte
 
 
 ## Como se usa?
 
-Con la agenda abierta puedes crear guardar contactos personales o profecionales con su:
+Con la agenda abierta puedes crear guardar contactos _personales o profecionales_ con su:
 
 | Option | Description |
 | ------ | ----------- |
