@@ -5,9 +5,19 @@ namespace App\Entity;
 use App\Repository\ContactoRepository;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
-
+use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;//Hace que no podamos tener duplicados lo que necesitemos en mi caso Correo y telefono
 /**
- * @ORM\Entity(repositoryClass=ContactoRepository::class)
+ *  @UniqueEntity(
+ *      fields={"correo"},
+ *     errorPath="correo",
+ *     message="El correo esta en uso."
+ * )
+ * @UniqueEntity(
+ *      fields={"telefono"},
+ *     errorPath="telefono",
+ *     message="El telefono esta en uso."
+ * ) 
+ *  @ORM\Entity(repositoryClass=ContactoRepository::class)
  */
 class Contacto
 {
