@@ -83,5 +83,5 @@ Mi persona **Carlos José Torres Baietti**
 
 Puedes usar el enlace de Git y modificarlo y/o mejorarlo en el siguiente enlace:
 
-https://github.com/Xernescx/agendaSymfony
+https://github.com/Xernescx/agendaSynfony
 
